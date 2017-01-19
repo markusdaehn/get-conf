@@ -1,5 +1,5 @@
 {
-  "name": "get-config",
+  "name": "load-config",
   "version": "1.0.0",
   "description": "Get Configuration",
   "main": "./src/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markusdaehn/get-config.git"
+    "url": "git+https://github.com/markusdaehn/load-config.git"
   },
   "keywords": [
     "Config",
@@ -19,9 +19,9 @@
   "author": "Markus Daehn",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/markusdaehn/get-config/issues"
+    "url": "https://github.com/markusdaehn/load-config/issues"
   },
-  "homepage": "https://github.com/markusdaehn/get-config#readme",
+  "homepage": "https://github.com/markusdaehn/load-config#readme",
   "dependencies": {
     "deep-extend": "^0.4.1",
     "glob": "^7.1.1",
