@@ -9,8 +9,8 @@ const nullableLogger = {
   info: () => {}
 };
 
-module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, path, envVars, cwd, options) {
-  let { logger, configPath } = normalize(path, cwd, options);
+module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, joinPath, envVars, cwd, options) {
+  let { logger, configPath } = normalize(joinPath, cwd, options);
 
   try {
     if(configs[configPath]) return configs[configPath];
@@ -28,8 +28,8 @@ module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, path
   return configPath ? configs[configPath] = {} : {};
 }
 
-function normalize(path, cwd, options) {
-  let logger = nullableLogger, configPath = path.join(cwd, DEFAULT_CONFIG_DIR);
+function normalize(joinPath, cwd, options) {
+  let logger = nullableLogger, configPath = joinPath(cwd, DEFAULT_CONFIG_DIR);
 
   if(typeof options === 'string') {
     configPath = options;
