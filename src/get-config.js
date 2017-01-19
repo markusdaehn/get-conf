@@ -17,12 +17,12 @@ module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, join
 
     envVars = applyDefaults(logger, envVars, configPath);
 
-    let baseConfig = getEnvConfig(logger, envVars, configPath, DEFAULT_CONFIG_NAME);
-    let envConfig = getEnvConfig(logger, envVars, configPath, envVars.NODE_ENV || baseConfig.appName || 'application');
+    let defaultConfig = getEnvConfig(logger, envVars, configPath, DEFAULT_CONFIG_NAME);
+    let envConfig = getEnvConfig(logger, envVars, configPath, envVars.NODE_ENV || defaultConfig.appName || 'application');
 
-    return configs[configPath] = deepMerge(baseConfig, envConfig);
+    return configs[configPath] = deepMerge(defaultConfig, envConfig);
   } catch(e) {
-    logger.info({exception: e}, 'server.config.create: error finding config');
+    logger.info({exception: e}, 'get-confg');
   }
 
   return configPath ? configs[configPath] = {} : {};
