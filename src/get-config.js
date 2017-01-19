@@ -1,4 +1,5 @@
 const DEFAULT_CONFIG_NAME = 'default';
+const DEFAULT_CONFIG_DIR = 'config';
 const configs = {};
 const nullableLogger = {
   error: () => {},
@@ -8,8 +9,8 @@ const nullableLogger = {
   info: () => {}
 };
 
-module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, envVars, options) {
-  let { logger, configPath } = normalize(options);
+module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, path, envVars, cwd, options) {
+  let { logger, configPath } = normalize(path, cwd, options);
 
   try {
     if(configs[configPath]) return configs[configPath];
@@ -27,8 +28,8 @@ module.exports = function getConfig(applyDefaults, getEnvConfig, deepMerge, envV
   return configPath ? configs[configPath] = {} : {};
 }
 
-function normalize(options) {
-  let logger = nullableLogger, configPath = '';
+function normalize(path, cwd, options) {
+  let logger = nullableLogger, configPath = path.join(cwd, DEFAULT_CONFIG_DIR);
 
   if(typeof options === 'string') {
     configPath = options;

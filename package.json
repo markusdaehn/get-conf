@@ -4,9 +4,9 @@
   "description": "Get Configuration",
   "main": "./src/index.js",
   "scripts": {
-    "i-test": "NODE_ENV=test node ./node_modules/.bin/_mocha \"./**/*.i-spec.js\"",
-    "prepublish": "npm run i-test",
-    "watch-i-test": "./node_modules/.bin/nodemon --exec 'npm run i-test'"
+    "test": "NODE_ENV=test node ./node_modules/.bin/_mocha \"./**/*.spec.js\"",
+    "prepublish": "npm run test",
+    "watch-test": "./node_modules/.bin/nodemon --exec 'npm run test'"
   },
   "repository": {
     "type": "git",
